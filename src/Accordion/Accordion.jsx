@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import AccordionItem from './AccordionItem';
+import React, { useState } from 'react'
+import AccordionItem from './AccordionItem'
 
 
 const data=[
@@ -18,24 +18,22 @@ const data=[
         "GitHub is built by developers for developers, and we’re proud to be home to the world’s largest open source community. With 50 million developers and millions more open source projects, GitHub has become the go-to place to collaborate and build software together.",
     },
 ]
-
-
-
 const Accordion = () => {
-
-  const [openIndex,setOpenIndex]=useState(2);
+    const [openIndex,setOpenIndex]=useState(null)
   return (
-    <div className='w-[50%] m-auto mt-5'>
-        {data.map((item,index)=>(
+    <div className='w-[50%] m-auto mt'>
+        {data.map((item,index)=>
             <AccordionItem 
-              key= {index} 
-              title={item.title} 
-              body={item.content} 
-              IsOpen={index === openIndex ? true :false} //FISR ACCRDION TRUE REST CLOSE 
-              setIsOpen={()=>{
-                index===openIndex ?setOpenIndex(null):setOpenIndex(index)
-              }}/>
-        ))}
+                key={index} 
+                title={item.title} 
+                content={item.content}
+                IsOpen={index===openIndex ?true : false}//first accordion-true,other=false
+                setIsOpen={()=>{
+                    //second should open others closed
+                    index===openIndex?setOpenIndex(null):setOpenIndex(index)
+                }}
+            />
+        )}
     </div>
   )
 }
